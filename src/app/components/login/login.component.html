@@ -29,26 +29,26 @@
                                             Please Enter Your Information
                                         </h4>
                                         <div class="space-6"></div>
-                                        <form>
+                                        <div>
                                             <fieldset>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="text" id="txtUserName" class="form-control"
-                                                            placeholder="Username" name="Username" (ngModel)="username" />
+                                                            placeholder="Username" name="Username" [(ngModel)]="loginRequest.UserName" />
                                                         <i class="ace-icon fa fa-user"></i>
                                                     </span>
                                                 </label>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="password" id="txtpassword" class="form-control"
-                                                            placeholder="Password" name="Password" (ngModel)="password" />
+                                                            placeholder="Password" name="Password" [(ngModel)]="loginRequest.Password" />
                                                         <i class="ace-icon fa fa-lock"></i>
                                                     </span>
                                                 </label>
                                                 <div class="space"></div>
                                                 <div class="clearfix">
                                                     <label class="inline">
-                                                        <input type="checkbox" class="ace" id="IsRemember" (ngModel)="isRemember"/>
+                                                        <input type="checkbox" class="ace" id="IsRemember" [(ngModel)]="loginRequest.IsRemember"/>
                                                         <span class="lbl"> Remember Me</span>
                                                     </label>
                                                     <!-- <button routerLink="/home"
@@ -64,7 +64,7 @@
                                                 </div>
                                                 <div class="space-4"></div>
                                             </fieldset>
-                                        </form>
+                                        </div>
                                     </div><!-- /.widget-main -->
 
                                     <div class="toolbar clearfix">
@@ -137,12 +137,12 @@
                                         <div class="space-6"></div>
                                         <p> Enter your details to begin: </p>
 
-                                        <form id="frmregister">
+                                        <div>
                                             <fieldset>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="email" id="txtemail" class="form-control"
-                                                            placeholder="Email" />
+                                                            placeholder="Email" [(ngModel)]="registerRequest.Email" />
                                                         <i class="ace-icon fa fa-envelope"></i>
                                                     </span>
                                                 </label>
@@ -150,7 +150,7 @@
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="text" id="txtcontact" class="form-control number"
-                                                            placeholder="Contact Number" />
+                                                            placeholder="Contact Number" [(ngModel)]="registerRequest.Contact"/>
                                                         <i class="ace-icon fa fa-user"></i>
                                                     </span>
                                                 </label>
@@ -158,7 +158,7 @@
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="password" id="txtregisterpassword"
-                                                            class="form-control" placeholder="Password" />
+                                                            class="form-control" placeholder="Password" [(ngModel)]="registerRequest.Password"/>
                                                         <i class="ace-icon fa fa-lock"></i>
                                                     </span>
                                                 </label>
@@ -166,7 +166,7 @@
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="password" id="txtconfirmregisterpassword"
-                                                            class="form-control" placeholder="Confirm password" />
+                                                            class="form-control" placeholder="Confirm password" [(ngModel)]="registerRequest.ConfirmPassword"/>
                                                         <i class="ace-icon fa fa-retweet"></i>
                                                     </span>
                                                 </label>
@@ -176,14 +176,14 @@
                                                         <span class="bigger-110">Reset</span>
                                                     </button>
 
-                                                    <button type="submit"
+                                                    <button (click)="registerUser()"
                                                         class="width-65 pull-right btn btn-sm btn-success">
                                                         <span class="bigger-110">Register</span>
                                                         <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
                                                     </button>
                                                 </div>
                                             </fieldset>
-                                        </form>
+                                        </div>
                                     </div>
 
                                     <div class="toolbar center">

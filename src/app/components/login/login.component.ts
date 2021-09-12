@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginRequest } from 'src/app/models/login/login-request';
+import { LoginResponse } from 'src/app/models/login/login-response';
+import { RegisterRequest } from 'src/app/models/register/register-request';
+import { ToastrService } from 'ngx-toastr';
+import { LoginService } from 'src/app/services/login.service';
+import { RegisterResponse } from 'src/app/models/register/register-response';
 
 @Component({
   selector: 'app-login',
@@ -6,21 +14,71 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: string;
-  password: string;
-  isRemember: boolean;
+  loginRequest: LoginRequest;
+  loginResponse: LoginResponse;
+  registerRequest: RegisterRequest;
+  registerResponse: RegisterResponse;
 
-  constructor() {
-    this.username = '';
-    this.password = '';
-    this.isRemember = false;
+  constructor(private loginService: LoginService, private router: Router, private _cookieService: CookieService, private toastr: ToastrService) {
+    this.loginRequest = new LoginRequest();
+    this.registerRequest = new RegisterRequest();
    }
 
   ngOnInit(): void {
   }
 
   login() {
-    console.log(this.username+ '' + this.password + '' + this.isRemember)
+    debugger;
+    if(this.loginRequest.UserName == '' || this.loginRequest.UserName == null || this.loginRequest.UserName == undefined) {
+      this.toastr.info('Username cannot be empty!');
+      return;
+    }
+    if(this.loginRequest.Password == '' || this.loginRequest.Password == null || this.loginRequest.Password == undefined) {
+      this.toastr.info('Password cannot be empty!');
+      return;
+    }
+    this.loginRequest.deviceinfo = navigator.userAgent;
+    this.loginRequest.URL = window.location.href;
+    this.loginService.authenticate(this.loginRequest).subscribe (
+      res => {
+        debugger;
+        this.loginResponse = res;
+        if(this.loginResponse.success == true && this.loginResponse.status == '200') {
+          // ADD USERNAME AND PASSWORD (ENCRYPTED) IN SESSION STORAGE
+
+          sessionStorage.setItem('accessToken', this.loginResponse.result.access_token);
+          if(this.loginRequest.IsRemember) {
+            this._cookieService.set('username', this.loginRequest.UserName, 30);
+            this._cookieService.set('password', this.loginRequest.Password, 30);
+          }
+          this.router.navigate(['/home']);
+        }
+        else {
+          this.router.navigate(['/']);
+        }
+        console.log(res);
+      }
+    )
+  }
+
+  registerUser() {
+    if(this.registerRequest.Password == this.registerRequest.ConfirmPassword) {
+      this.registerRequest.URL = window.location.href;
+      this.loginService.register(this.registerRequest).subscribe (
+        res => {
+          this.registerResponse = res;
+          if(this.registerResponse && this.registerResponse != null || this.registerResponse != undefined) {
+            if(this.registerResponse.success) {
+              this.toastr.success(this.registerResponse.message);
+              this.router.navigate(['/registerSuccess']);
+            }
+            else {
+              this.toastr.error(this.registerResponse.message);
+            }
+          }
+        }
+      );
+    }
   }
 
 }

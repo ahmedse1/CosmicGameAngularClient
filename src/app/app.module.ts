@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
+import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 
 
 @NgModule({

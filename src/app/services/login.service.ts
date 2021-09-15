@@ -15,4 +15,8 @@ export class LoginService {
   register(registerReq) {
     return this.generic.post('Login/UserRegister', registerReq);
   }
+
+  forgotPassword(email) {
+    return this.generic.post('Login/ForgotPassword', email)
+  }
 }

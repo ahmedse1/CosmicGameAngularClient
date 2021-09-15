@@ -27,7 +27,11 @@ export class GenericService {
   }
 
   get(url, id): Observable<any> {
-    return this.http.get(`${environment.baseUrl + url}/${id}`);
+    return this.http.get(`${environment.baseUrl + url}${id}`);
+  }
+
+  postWithoutAuth(url, data): Observable<any> {
+    return this.http.post(environment.baseUrl + url, data);
   }
 
   post(url, data): Observable<any> {

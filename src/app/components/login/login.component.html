@@ -97,24 +97,24 @@
                                         <p>
                                             Enter your email and to receive instructions
                                         </p>
-                                        <form id="frmResetPassword">
+                                        <div>
                                             <fieldset>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="email" id="txtForgotEmail" class="form-control"
-                                                            placeholder="Email" />
+                                                            placeholder="Email" [(ngModel)]="emailForPassword" />
                                                         <i class="ace-icon fa fa-envelope"></i>
                                                     </span>
                                                 </label>
                                                 <div class="clearfix">
-                                                    <button type="submit" id="btnForgotEmail"
+                                                    <button (click)="forgotPassword()" id="btnForgotEmail"
                                                         class="width-35 pull-right btn btn-sm btn-danger">
                                                         <i class="ace-icon fa fa-lightbulb-o"></i>
                                                         <span class="bigger-110">Send Me!</span>
                                                     </button>
                                                 </div>
                                             </fieldset>
-                                        </form>
+                                        </div>
                                     </div><!-- /.widget-main -->
 
                                     <div class="toolbar center">

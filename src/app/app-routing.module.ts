@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderFooterComponent } from './components/header-footer/header-footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
+import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 
 const routes: Routes = [
   {
@@ -14,31 +15,34 @@ const routes: Routes = [
   {
     path:'registerSuccess',
     component: RegisterSuccessComponent
-  }
-  ,
-  {
-    path:'home',
-    component: DashboardComponent
   },
   {
-    path: 'chartholders',
-    component: ChartHoldersComponent
-  }
-  
+    path:'verify',
+    component: VerifyUserComponent
+  },
   // {
-  //   path:'',
-  //   component:HeaderFooterComponent,
-  //   children:[
-  //     {
-  //       path:'home',
-  //       loadChildren: () => import('../app/components/dashboard/dashboard.module').then(m => m.DashboardModule)
-  //     },
-  //     {
-  //       path: 'chartholders',
-  //       loadChildren: () => import('./components/chart-holders/chart-holders.module').then(m => m.ChartHoldersModule)
-  //     }
-  //   ],
-  // }
+  //   path:'home',
+  //   component: DashboardComponent
+  // },
+  // {
+  //   path: 'chartholders',
+  //   component: ChartHoldersComponent
+  // },
+  
+  {
+    path:'',
+    component:HeaderFooterComponent,
+    children:[
+      {
+        path:'home',
+        loadChildren: () => import('../app/components/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'chartholders',
+        loadChildren: () => import('./components/chart-holders/chart-holders.module').then(m => m.ChartHoldersModule)
+      }
+    ],
+  }
 ];
 
 @NgModule({

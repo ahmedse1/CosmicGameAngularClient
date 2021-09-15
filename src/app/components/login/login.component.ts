@@ -18,10 +18,12 @@ export class LoginComponent implements OnInit {
   loginResponse: LoginResponse;
   registerRequest: RegisterRequest;
   registerResponse: RegisterResponse;
+  emailForPassword: string;
 
   constructor(private loginService: LoginService, private router: Router, private _cookieService: CookieService, private toastr: ToastrService) {
     this.loginRequest = new LoginRequest();
     this.registerRequest = new RegisterRequest();
+    this.emailForPassword = '';
    }
 
   ngOnInit(): void {
@@ -78,6 +80,24 @@ export class LoginComponent implements OnInit {
           }
         }
       );
+    }
+  }
+
+  forgotPassword() {
+    debugger;
+    if(this.emailForPassword != "") {
+      this.registerRequest.Email = this.emailForPassword;
+      this.loginService.forgotPassword(this.registerRequest).subscribe (
+        res => {
+          if(res) {
+            this.registerResponse = res;
+            if(this.registerResponse.success) {
+              this.toastr.success(this.registerResponse.message);
+            }
+          }
+          
+        }
+      )
     }
   }
 

@@ -13,6 +13,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
+import { CommonModule } from '@angular/common';
+import { ChartHoldersComponent } from './components/chart-holders/chart-holders.component';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { VerifyUserComponent } from './components/verify-user/verify-user.compon
     RegisterSuccessComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

@@ -9,14 +9,14 @@ export class LoginService {
   constructor(private generic: GenericService) { }
 
   authenticate(loginReq) {
-    return this.generic.post('Login/UserLogin', loginReq);
+    return this.generic.post('api/Login/UserLogin', loginReq);
   }
 
   register(registerReq) {
-    return this.generic.post('Login/UserRegister', registerReq);
+    return this.generic.post('api/Login/UserRegister', registerReq);
   }
 
   forgotPassword(email) {
-    return this.generic.post('Login/ForgotPassword', email)
+    return this.generic.post('api/Login/ForgotPassword', email)
   }
 }

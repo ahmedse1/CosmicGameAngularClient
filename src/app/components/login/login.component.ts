@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { LoginRequest } from 'src/app/models/login/login-request';
-import { LoginResponse } from 'src/app/models/login/login-response';
-import { RegisterRequest } from 'src/app/models/register/register-request';
 import { ToastrService } from 'ngx-toastr';
-import { LoginService } from 'src/app/services/login.service';
-import { RegisterResponse } from 'src/app/models/register/register-response';
+import { LoginRequest } from '../../models/login/login-request';
+import { LoginResponse } from '../../models/login/login-response';
+import { RegisterRequest } from '../../models/register/register-request';
+import { RegisterResponse } from '../../models/register/register-response';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         if(this.loginResponse.success == true && this.loginResponse.status == '200') {
           // ADD USERNAME AND PASSWORD (ENCRYPTED) IN SESSION STORAGE
 
-          sessionStorage.setItem('accessToken', this.loginResponse.result.access_token);
+          sessionStorage.setItem('accessToken', JSON.stringify(this.loginResponse.result.access_token));
           if(this.loginRequest.IsRemember) {
             this._cookieService.set('username', this.loginRequest.UserName, 30);
             this._cookieService.set('password', this.loginRequest.Password, 30);

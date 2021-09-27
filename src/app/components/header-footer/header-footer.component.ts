@@ -14,7 +14,7 @@ export class HeaderFooterComponent implements OnInit {
   }
 
   logout() {
-    sessionStorage.clear();
+    sessionStorage.removeItem('accessToken');
     this.router.navigate(['/']);
   }
 

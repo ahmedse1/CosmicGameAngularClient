@@ -20,29 +20,29 @@ const routes: Routes = [
     path:'verify',
     component: VerifyUserComponent
   },
-  // {
-  //   path:'home',
-  //   component: DashboardComponent
-  // },
-  // {
-  //   path: 'chartholders',
-  //   component: ChartHoldersComponent
-  // },
-  
   {
-    path:'',
-    component:HeaderFooterComponent,
-    children:[
-      {
-        path:'home',
-        loadChildren: () => import('../app/components/dashboard/dashboard.module').then(m => m.DashboardModule)
-      },
-      {
-        path: 'chartholders',
-        loadChildren: () => import('./components/chart-holders/chart-holders.module').then(m => m.ChartHoldersModule)
-      }
-    ],
-  }
+    path:'home',
+    component: DashboardComponent
+  },
+  {
+    path: 'chartholders',
+    component: ChartHoldersComponent
+  },
+  
+  // {
+  //   path:'',
+  //   component:HeaderFooterComponent,
+  //   children:[
+  //     {
+  //       path:'home',
+  //       loadChildren: () => import('../app/components/dashboard/dashboard.module').then(m => m.DashboardModule)
+  //     },
+  //     {
+  //       path: 'chartholders',
+  //       loadChildren: () => import('./components/chart-holders/chart-holders.module').then(m => m.ChartHoldersModule)
+  //     }
+  //   ],
+  // }
 ];
 
 @NgModule({

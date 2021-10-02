@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ChartHolderDetailsComponent } from './components/chart-holder-details/chart-holder-details.component';
 import { ChartHoldersComponent } from './components/chart-holders/chart-holders.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderFooterComponent } from './components/header-footer/header-footer.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'chartholders',
     component: ChartHoldersComponent
+  },
+  {
+    path: 'ChartHoldersDetails',
+    component: ChartHolderDetailsComponent
   },
   
   // {

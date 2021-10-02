@@ -15,6 +15,8 @@ import { RegisterSuccessComponent } from './components/register-success/register
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 import { CommonModule } from '@angular/common';
 import { ChartHoldersComponent } from './components/chart-holders/chart-holders.component';
+import { ChartHoldersModule } from './components/chart-holders/chart-holders.module';
+import { ChartHolderDetailsComponent } from './components/chart-holder-details/chart-holder-details.component';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { ChartHoldersComponent } from './components/chart-holders/chart-holders.
     AppComponent,
     LoginComponent,
     HeaderFooterComponent,
-    RegisterSuccessComponent
+    RegisterSuccessComponent,
+    ChartHolderDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import { ChartHoldersComponent } from './components/chart-holders/chart-holders.
     HttpClientModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartHoldersModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

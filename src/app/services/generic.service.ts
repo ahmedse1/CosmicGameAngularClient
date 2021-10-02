@@ -34,14 +34,12 @@ export class GenericService {
     //headers = headers.append('Token', 'Bearer ' + sessionStorage.getItem("accessToken"));
     headers = headers.append('Authorization', token);
     
-    headers = headers.append('Content-Type', 'application/json; charset=UTF-8');
+    headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('Accept', 'application/json');
     return headers;
 }
 
   getAll(url): Observable<any> {
-    //httpOptions.headers.append('Authorization', token);
-    //return this.http.post(environment.baseUrl + url, { responseType: 'text', headers: httpOptions });
     return this.http.post(environment.baseUrl + url, '', { responseType: 'text', headers: this.headers })
   }
 
@@ -54,7 +52,8 @@ export class GenericService {
   }
 
   post(url, data): Observable<any> {
-    return this.http.post(environment.baseUrl + url, data);
+    debugger
+    return this.http.post(environment.baseUrl + url, data,  { responseType: 'text', headers: this.headers });
   }
 
   update(url, id, data): Observable<any> {

@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         }
         else {
+          this.toastr.error('Username or password is not correct!');
           this.router.navigate(['/']);
         }
         console.log(res);

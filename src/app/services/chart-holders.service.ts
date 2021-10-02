@@ -11,4 +11,20 @@ export class ChartHoldersService {
   getChartHoldersList() {
     return this.generic.getAll('Client/ChartHolder/ChartHolderList');
   }
+
+  addNewChartHolder(obj) {
+    return this.generic.post('Client/ChartHolder/SaveChartHolder', obj);
+  }
+
+  removeChartHolderById(id) {
+    return this.generic.post('Client/ChartHolder/removeChartHolderRecord', id);
+  }
+
+  getCountries() {
+    return this.generic.post('Client/ChartHolder/Countries', null);
+  }
+
+  getTimezoneCountrywise(country) {
+    return this.generic.post('Client/ChartHolder/TimeZone', JSON.stringify(country));
+  }
 }

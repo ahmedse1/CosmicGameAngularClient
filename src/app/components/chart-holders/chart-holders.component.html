@@ -6,7 +6,7 @@
             </h1>
         </div>
         <div class="col-xs-12 col-sm-6 widget-container-col ui-sortable">
-            <a class="width-15 pull-right btn btn-sm btn-success">
+            <a routerLink="/ChartHoldersDetails" class="width-15 pull-right btn btn-sm btn-success">
                 <i class="ace-icon fa fa-plus"></i>
                 <span class="bigger-110">Create New</span>
             </a>
@@ -52,19 +52,20 @@
                                 <td>
                                     <div class="hidden-sm hidden-xs btn-group">
                                         <a class="btn btn-xs btn-success tooltip-success"
-                                            id="btnupdate-${wrChartHolderID}" onmouseover="showToolTip(this)"
+                                            id="btnupdate" onmouseover="showToolTip(this)"
                                             data-placement="top" data-original-title="Update"
-                                            href="ChartHolder/ChartHolderDetail?id=${wrChartHolderID}">
+                                            >
                                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                                         </a>
 
                                         <a class="btn btn-xs btn-danger tooltip-danger"
-                                            id="btndelete-${wrChartHolderID}" onmouseover="showToolTip(this)"
+                                            id="btndelete" onmouseover="showToolTip(this)"
                                             data-placement="top" data-original-title="Delete">
-                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                            <i class="ace-icon fa fa-trash-o bigger-120" (click)="deleteChartHolder(chartHolder.wrChartHolderID)"></i>
+                                            
                                         </a>
 
-                                        <button class="btn btn-xs btn-info tooltip-info" id="btnview-${wrChartHolderID}"
+                                        <button class="btn btn-xs btn-info tooltip-info" id="btnview"
                                             onmouseover="showToolTip(this)" data-placement="top"
                                             data-original-title="View">
                                             <i class="ace-icon fa fa-search bigger-120"></i>
@@ -76,7 +77,7 @@
                     </table>
                 </div><!-- /.span -->
                 <div class="col-xs-12 col-sm-6 btn-addnew hide">
-                    <a href="ChartHolder/ChartHolderDetail" class="width-15 btn btn-sm btn-success">
+                    <a routerLink="/ChartHoldersDetails" class="width-15 btn btn-sm btn-success">
                         <i class="ace-icon fa fa-plus"></i>
                         <span class="bigger-110">Create New</span>
                     </a>

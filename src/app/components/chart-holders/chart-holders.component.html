@@ -6,7 +6,7 @@
             </h1>
         </div>
         <div class="col-xs-12 col-sm-6 widget-container-col ui-sortable">
-            <a routerLink="/ChartHoldersDetails" class="width-15 pull-right btn btn-sm btn-success">
+            <a routerLink="/ChartHoldersDetails" (click)="clearService()" class="width-15 pull-right btn btn-sm btn-success">
                 <i class="ace-icon fa fa-plus"></i>
                 <span class="bigger-110">Create New</span>
             </a>
@@ -55,7 +55,7 @@
                                             id="btnupdate" onmouseover="showToolTip(this)"
                                             data-placement="top" data-original-title="Update"
                                             >
-                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                            <i class="ace-icon fa fa-pencil bigger-120" (click)="getSingleChartHolder(chartHolder.wrChartHolderID)"></i>
                                         </a>
 
                                         <a class="btn btn-xs btn-danger tooltip-danger"

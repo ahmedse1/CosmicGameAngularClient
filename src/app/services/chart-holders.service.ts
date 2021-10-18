@@ -20,6 +20,10 @@ export class ChartHoldersService {
     return this.generic.post('Client/ChartHolder/removeChartHolderRecord', id);
   }
 
+  getSingleChartHolder(id)
+ {
+  return this.generic.post('Client/ChartHolder/SingleChartHolder', id);
+ }
   getCountries() {
     return this.generic.post('Client/ChartHolder/Countries', null);
   }

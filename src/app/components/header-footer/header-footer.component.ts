@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header-footer',
@@ -8,14 +9,13 @@ import { Router } from '@angular/router';
 })
 export class HeaderFooterComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
 
   logout() {
-    sessionStorage.removeItem('accessToken');
-    this.router.navigate(['/']);
+    this.loginService.logout();
   }
 
 }

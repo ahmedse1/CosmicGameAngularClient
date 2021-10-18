@@ -1,30 +1,30 @@
 export class ChartHolder {
-    WrChartHolderID: number
-    WrUserID: number
-    WrChildName: string
-    WrFatherName: string
-    WrMotherName: string
-    WrGender: boolean
-    WrBirhPlace: string
-    WrCity: string
-    WrState: string
-    WrCountry: string
-    WrPostalCode: string
-    WrDOB: string
-    WrDateOfBirth: Date
+    wrChartHolderID: number
+    wrUserID: number
+    wrChildName: string
+    wrFatherName: string
+    wrMotherName: string
+    wrGender: boolean
+    wrBirhPlace: string
+    wrCity: string
+    wrState: string
+    wrCountry: string
+    wrPostalCode: string
+    wrDOB: string
+    wrDateOfBirth: Date
     DateDOB?: Date
     //  WrTOB: string
-    WrTimeZone: string
-    WrAyanamsa: string
-    WrHouseSystem: string
-    WrAynamsaPolicy: string
-    WrLatLocator: string
-    WrLngLocator: string
-    WrLatitude: string
-    WrLongitude: string
+    wrTimeZone: string
+    wrAyanamsa: string
+    wrHouseSystem: string
+    wrAynamsaPolicy: string
+    wrLatLocator: string
+    wrLngLocator: string
+    wrLatitude: string
+    wrLongitude: string
     // public bool WrBirthTimeRectified: string
-    WrContactPhoneNumber: string
-    WrEmail: string
+    wrContactPhoneNumber: string
+    wrEmail: string
     //  WrPhoneNo: string
     isAdd: boolean
 }

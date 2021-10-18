@@ -7,7 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderFooterComponent } from './components/header-footer/header-footer.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
@@ -17,6 +17,8 @@ import { CommonModule } from '@angular/common';
 import { ChartHoldersComponent } from './components/chart-holders/chart-holders.component';
 import { ChartHoldersModule } from './components/chart-holders/chart-holders.module';
 import { ChartHolderDetailsComponent } from './components/chart-holder-details/chart-holder-details.component';
+import { JwtInterceptor } from './services/jwt-interceptor';
+import { ErrorInterceptor } from './services/error-interceptor';
 
 
 @NgModule({
@@ -37,7 +39,10 @@ import { ChartHolderDetailsComponent } from './components/chart-holder-details/c
     BrowserAnimationsModule,
     ChartHoldersModule
   ],
-  providers: [CookieService],
+  providers: [CookieService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

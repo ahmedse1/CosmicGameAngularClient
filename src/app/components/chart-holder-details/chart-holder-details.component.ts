@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ChartHolder } from 'src/app/models/chartholders/chart-holder';
 import { ChartHoldersService } from 'src/app/services/chart-holders.service';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-chart-holder-details',
@@ -10,30 +11,39 @@ import { ChartHoldersService } from 'src/app/services/chart-holders.service';
 })
 export class ChartHolderDetailsComponent implements OnInit {
 
-  chartHolders: ChartHolder;
+  chartHolder: ChartHolder;
   countries: any;
   timezones: any;
   gender: string = '';
-
-  constructor(private chartHoldersService: ChartHoldersService, private toastr: ToastrService) {
-    this.chartHolders = new ChartHolder();
+  constructor(private chartHoldersService: ChartHoldersService, private toastr: ToastrService, private globalService: GlobalService) {
+    this.chartHolder = new ChartHolder();
   }
 
   ngOnInit(): void {
+    debugger
+    var chartHolder = this.globalService.getChartHolder();
+    if(chartHolder != null || chartHolder != undefined) {
+      this.chartHolder = chartHolder;
+      if(this.chartHolder.wrGender) {
+        this.gender = 'male'
+      }
+      else {
+        this.gender = 'female'
+      }
+    }
     this.getCountriesList();
   }
-
 
   addNewChartHolder() {
     debugger
     if (this.gender == 'male') {
-      this.chartHolders.WrGender = true;
+      this.chartHolder.wrGender = true;
     }
     else {
-      this.chartHolders.WrGender = false;
+      this.chartHolder.wrGender = false;
     }
 
-    this.chartHoldersService.addNewChartHolder(this.chartHolders).subscribe(
+    this.chartHoldersService.addNewChartHolder(this.chartHolder).subscribe(
       res => {
         debugger;
         if (res != null || res != undefined) {

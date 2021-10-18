@@ -28,7 +28,7 @@
                                         >Contact</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="txtContact" placeholder="Contact"
-                                            [(ngModel)]="chartHolders.WrContactPhoneNumber" />
+                                            [(ngModel)]="chartHolder.wrContactPhoneNumber" />
                                     </div>
                                 </div>
 
@@ -42,7 +42,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right">Child Name</label>
                                     <div class="col-sm-9">
-                                        <input [(ngModel)]="chartHolders.WrChildName" class="form-control" id="txtChildName"
+                                        <input [(ngModel)]="chartHolder.wrChildName" class="form-control" id="txtChildName"
                                             placeholder="Ex. Smith" />
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                         >Father
                                         Name</label>
                                     <div class="col-sm-9">
-                                        <input [(ngModel)]="chartHolders.WrFatherName" class="form-control" id="txtFatherName"
+                                        <input [(ngModel)]="chartHolder.wrFatherName" class="form-control" id="txtFatherName"
                                             placeholder="Ex. michele" />
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                         >Mother
                                         Name</label>
                                     <div class="col-sm-9">
-                                        <input [(ngModel)]="chartHolders.WrMotherName" class="form-control" id="txtMotherName"
+                                        <input [(ngModel)]="chartHolder.wrMotherName" class="form-control" id="txtMotherName"
                                             placeholder="Ex. Michelle" />
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <input id="txtBirthDate" type="text" class="form-control datetimepicker"
-                                                [(ngModel)]="chartHolders.WrDOB" />
+                                                [(ngModel)]="chartHolder.wrDOB" />
                                             <span class="input-group-addon">
                                                 <i class="fa fa-clock-o bigger-110"></i>
                                             </span>
@@ -107,7 +107,7 @@
                                             <label>
                                                 <input name="rdoAynamsa" class="rdoAynamsa" type="radio" class="ace"
                                                     id="rdNirayana" value="Nirayana"
-                                                    [(ngModel)]="chartHolders.WrAynamsaPolicy" />
+                                                    [(ngModel)]="chartHolder.wrAynamsaPolicy" />
                                                 <span class="lbl"> Nirayana</span>
                                             </label>
                                         </div>
@@ -116,7 +116,7 @@
                                             <label>
                                                 <input name="rdoAynamsa" class="rdoAynamsa" type="radio" class="ace"
                                                     id="rdSayana" value="Sayana"
-                                                    [(ngModel)]="chartHolders.WrAynamsaPolicy" />
+                                                    [(ngModel)]="chartHolder.wrAynamsaPolicy" />
                                                 <span class="lbl"> Sayana</span>
                                             </label>
                                         </div>
@@ -127,7 +127,7 @@
                                         >Aynamsa</label>
                                     <div class="col-sm-9">
                                         <select class="form-control" id="ddlAynamsa"
-                                            [(ngModel)]="chartHolders.WrAyanamsa" data-placeholder="Choose a Aynamsa">
+                                            [(ngModel)]="chartHolder.wrAyanamsa" data-placeholder="Choose a Aynamsa">
                                             <option value="0">--Select Aynamsa--</option>
                                             <!-- <option value="0">NA</option> -->
                                             <option value="5">lahiri</option>
@@ -140,7 +140,7 @@
                                         System</label>
                                     <div class="col-sm-9">
                                         <select class="form-control" id="ddlHouseSys"
-                                            [(ngModel)]="chartHolders.WrHouseSystem"
+                                            [(ngModel)]="chartHolder.wrHouseSystem"
                                             data-placeholder="Choose a House sys">
                                             <option value="0">--House System--</option>
                                             <option value="P">P</option>
@@ -163,7 +163,7 @@
                                     <label class="col-sm-3 control-label no-padding-right">Email</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="txtEmail"
-                                            [(ngModel)]="chartHolders.WrEmail"
+                                            [(ngModel)]="chartHolder.wrEmail"
                                             placeholder="youremailaddress@mail.com" />
                                     </div>
                                 </div>
@@ -173,7 +173,7 @@
                                         Place</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="txtBirthPlace"
-                                            [(ngModel)]="chartHolders.WrBirhPlace" placeholder="Birth Address" />
+                                            [(ngModel)]="chartHolder.wrBirhPlace" placeholder="Birth Address" />
                                     </div>
                                 </div>
 
@@ -181,7 +181,7 @@
                                     <label class="col-sm-3 control-label no-padding-right">City</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="txtCity"
-                                            [(ngModel)]="chartHolders.WrCity" />
+                                            [(ngModel)]="chartHolder.wrCity" />
                                     </div>
                                 </div>
 
@@ -189,7 +189,7 @@
                                     <label class="col-sm-3 control-label no-padding-right">State</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="txtState"
-                                            [(ngModel)]="chartHolders.WrState" />
+                                            [(ngModel)]="chartHolder.wrState" />
                                     </div>
                                 </div>
 
@@ -198,7 +198,7 @@
                                         >Country</label>
                                     <div class="col-sm-9">
                                         <select class="chosen-select form-control" id="ddlCountry" #selected
-                                            [(ngModel)]="chartHolders.WrCountry" data-placeholder="Choose a Country" (change)="dropdownCountrySelected(selected.value)">
+                                            [(ngModel)]="chartHolder.wrCountry" data-placeholder="Choose a Country" (change)="dropdownCountrySelected(selected.value)">
                                             <option value="0">--Select Country--</option>
                                             <option *ngFor="let country of countries" [value]="country.CountryName">{{country.CountryName}}</option>
                                         </select>
@@ -209,7 +209,7 @@
                                         Code</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="txtPostalCode"
-                                            [(ngModel)]="chartHolders.WrPostalCode" />
+                                            [(ngModel)]="chartHolder.wrPostalCode" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -217,7 +217,7 @@
                                         Zone</label>
                                     <div class="col-sm-9">
                                         <select class="chosen-select form-control" id="ddlTimeZone"
-                                            [(ngModel)]="chartHolders.WrTimeZone" data-placeholder="Choose a Time zone">
+                                            [(ngModel)]="chartHolder.wrTimeZone" data-placeholder="Choose a Time zone">
                                             <option value="0">--Select the UTC value--</option>
                                             <option *ngFor="let timezone of timezones" [value]="timezone.TimeZoneValue">{{timezone.ActualTimeZone}}</option>
                                         </select>
@@ -228,10 +228,10 @@
                                         >Latitude</label>
                                     <div class="col-sm-4">
                                         <input type="text" class="form-control" id="txtLatitude"
-                                            [(ngModel)]="chartHolders.WrLatitude" />
+                                            [(ngModel)]="chartHolder.wrLatitude" />
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="txtLatLocator" disabled />
+                                        <input type="text" class="form-control" id="txtLatLocator" [(ngModel)]="chartHolder.wrLatLocator" disabled />
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="txtDMSLat" disabled />
@@ -242,10 +242,10 @@
                                         >Longitude</label>
                                     <div class="col-sm-4">
                                         <input type="text" class="form-control" id="txtLongitude"
-                                            [(ngModel)]="chartHolders.WrLongitude" />
+                                            [(ngModel)]="chartHolder.wrLongitude" />
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="txtLngLocator" disabled />
+                                        <input type="text" class="form-control" id="txtLngLocator" [(ngModel)]="chartHolder.wrLngLocator" disabled />
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="txtDMSLong" disabled />
@@ -404,7 +404,7 @@
                             <i class="ace-icon fa fa-map-marker"></i>
                             Show Map
                         </a>
-                        <a class="btn  btn-inverse" href="/client/chartholder">
+                        <a class="btn  btn-inverse" routerLink="/chartholders">
                             <i class="ace-icon fa fa-arrow-left"></i>
                             Back
                         </a>

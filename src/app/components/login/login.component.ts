@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit {
     this.loginRequest = new LoginRequest();
     this.registerRequest = new RegisterRequest();
     this.emailForPassword = '';
+    if(loginService.currentUserValue) {
+      this.router.navigate(['/']);
+    }
    }
 
   ngOnInit(): void {
@@ -41,7 +44,7 @@ export class LoginComponent implements OnInit {
     }
     this.loginRequest.deviceinfo = navigator.userAgent;
     this.loginRequest.URL = window.location.href;
-    this.loginService.authenticate(this.loginRequest).subscribe (
+    this.loginService.login(this.loginRequest).subscribe (
       res => {
         debugger;
         this.loginResponse = res;
@@ -53,11 +56,11 @@ export class LoginComponent implements OnInit {
             this._cookieService.set('username', this.loginRequest.UserName, 30);
             this._cookieService.set('password', this.loginRequest.Password, 30);
           }
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         }
         else {
           this.toastr.error('Username or password is not correct!');
-          this.router.navigate(['/']);
+          this.router.navigate(['/login']);
         }
         console.log(res);
       }

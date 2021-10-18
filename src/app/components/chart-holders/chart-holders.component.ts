@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterResponse } from 'src/app/models/register/register-response';
+import { GlobalService } from 'src/app/services/global.service';
 import { ChartHolder } from '../../models/chartholders/chart-holder';
 import { ChartHoldersService } from '../../services/chart-holders.service';
 
@@ -12,7 +14,8 @@ import { ChartHoldersService } from '../../services/chart-holders.service';
 export class ChartHoldersComponent implements OnInit {
 
   chartHolders: ChartHolder[];
-  constructor(private chartHoldersService: ChartHoldersService, private toastr: ToastrService) {
+  chartHolder: ChartHolder;
+  constructor(private chartHoldersService: ChartHoldersService, private router: Router, private toastr: ToastrService, private globalService: GlobalService) {
     this.chartHolders = [];
    }
 
@@ -54,4 +57,35 @@ export class ChartHoldersComponent implements OnInit {
     )
   }
 
+  getSingleChartHolder(id) {
+    console.log(id)
+    debugger
+    this.chartHoldersService.getSingleChartHolder(id).subscribe(
+      res => {
+        debugger;
+        if(res != null || res != undefined) {
+          res = JSON.parse(res);
+          if(res.success) {
+            this.chartHolder = res.result;
+            this.globalService.setChartHolder(this.chartHolder);
+            this.router.navigate(['/ChartHoldersDetails']);
+          }
+        }
+        //     this.toastr.success(res.message);
+        //     this.getChartHoldersList();
+        //   }
+        //   else {
+        //     this.toastr.error(res.message);
+        //   }
+        // }
+        // else {
+        //   this.toastr.error('Something went wrong!');
+        // }
+      }
+    )
+  }
+
+  clearService() {
+    this.globalService.clear();
+  }
 }

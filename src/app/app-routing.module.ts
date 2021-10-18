@@ -7,10 +7,16 @@ import { HeaderFooterComponent } from './components/header-footer/header-footer.
 import { LoginComponent } from './components/login/login.component';
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
+import { AuthGuard } from './services/auth-guard';
 
 const routes: Routes = [
   {
-  path:'',
+    path:'',
+    redirectTo:'home',
+    pathMatch: 'full'
+  },
+  {
+  path:'login',
   component:LoginComponent
   },
   {
@@ -22,15 +28,19 @@ const routes: Routes = [
     component: VerifyUserComponent
   },
   {
+
     path:'home',
+    canActivate:[AuthGuard],
     component: DashboardComponent
   },
   {
     path: 'chartholders',
+    canActivate:[AuthGuard],
     component: ChartHoldersComponent
   },
   {
     path: 'ChartHoldersDetails',
+    canActivate:[AuthGuard],
     component: ChartHolderDetailsComponent
   },
   
